@@ -1,0 +1,18 @@
+{
+  "_comment": "Real-shape planetar-ais vessel object (src/source-mock.mjs _snapshot()). Note `type` = vessel class and `length` = metres — both renamed by the canonical model.",
+  "mmsi": 316001234,
+  "name": "PACIFIC VOYAGER",
+  "type": "cargo",
+  "flag": "CA",
+  "length": 180,
+  "callsign": "CFAX2",
+  "lat": 48.4284,
+  "lon": -123.3656,
+  "sog": 15.47,
+  "cog": 287.3,
+  "heading": 285.8,
+  "destination": "VANCOUVER",
+  "lastSeenNs": "1747608345678901234",
+  "firstSeenNs": "1747607234567890123",
+  "inBBox": true
+}

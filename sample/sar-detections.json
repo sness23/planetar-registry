@@ -1,0 +1,23 @@
+{
+  "_comment": "Real-shape planetar-sat GeoDetection objects. Anonymous radar blobs — no MMSI. acquired_at_ns is a string so JSON's 53-bit float limit doesn't corrupt the ns timestamp.",
+  "detections": [
+    {
+      "_label": "near a known AIS vessel — corroboration",
+      "scene_id": "S1A_EW_GRDM_1SDV_20260518T090200_20260518T090300_054921_06CDBE_7F54",
+      "lat": 48.4311,
+      "lon": -123.3656,
+      "snr": 14.0,
+      "bbox_px": [142, 256, 149, 265],
+      "acquired_at_ns": "1747608645678901234"
+    },
+    {
+      "_label": "open water, no AIS within 2 km — dark vessel",
+      "scene_id": "S1A_EW_GRDM_1SDV_20260518T090200_20260518T090300_054921_06CDBE_8A21",
+      "lat": 48.6000,
+      "lon": -123.6000,
+      "snr": 11.5,
+      "bbox_px": [880, 512, 889, 524],
+      "acquired_at_ns": "1747608500000000000"
+    }
+  ]
+}

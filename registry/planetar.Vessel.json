@@ -1,0 +1,39 @@
+{
+  "_comment": "Registry SSOT entry for the planetar:Vessel canonical type. In production this is a core:SchemaType entity stored as markdown+YAML in the git-vault registry; JSON here keeps the prototype zero-dep.",
+  "type": "planetar:Vessel",
+  "version": "1.0.0",
+  "extends": "core:CanonicalEntity",
+  "namespace": "planetar",
+  "identity": {
+    "fields": ["mmsi"],
+    "note": "MMSI is the AIS primary identifier. SAR/EO observations carry no MMSI and resolve via position+time."
+  },
+  "spatial": { "lat": "lat", "lon": "lon", "time": "last_seen_ns" },
+  "resolution": {
+    "_comment": "Drives the generic resolver. An observation of any accepted type scores against existing Vessels by these rules; the registry, not code, decides maritime matching.",
+    "accepts": ["planetar:Vessel", "planetar:Detection"],
+    "rules": [
+      { "kind": "exact_id", "field": "mmsi", "score": 1.0 },
+      { "kind": "geo_time", "max_km": 2.0, "max_dt_s": 1800, "base_score": 0.7 }
+    ],
+    "thresholds": { "merge": 0.95, "link": 0.80, "review": 0.30 }
+  },
+  "fields": [
+    { "name": "mmsi",          "local_id": 1,  "repr": "int",    "type": "integer", "required": true,  "sql": "INTEGER", "doc": "9-digit AIS Maritime Mobile Service Identity" },
+    { "name": "name",          "local_id": 2,  "repr": "string", "type": "string",  "required": true,  "sql": "TEXT",    "doc": "Registered ship name" },
+    { "name": "vessel_class",  "local_id": 3,  "repr": "string", "type": "string",  "sql": "TEXT",     "enum": ["cargo","ferry","tanker","fishing","pleasure","sailing","pilot","tug","high-speed","passenger","other"], "doc": "RENAMED from planetar-ais 'type' to avoid collision with the kernel 'type' field" },
+    { "name": "flag",          "local_id": 4,  "repr": "string", "type": "string",  "nullable": true,  "sql": "TEXT",    "doc": "ISO 3166-1 alpha-2 nation code" },
+    { "name": "length_m",      "local_id": 5,  "repr": "double", "type": "number",  "nullable": true,  "sql": "REAL",    "doc": "RENAMED from 'length'; units made explicit (metres)" },
+    { "name": "callsign",      "local_id": 6,  "repr": "string", "type": "string",  "nullable": true,  "sql": "TEXT" },
+    { "name": "lat",           "local_id": 7,  "repr": "double", "type": "number",  "required": true,  "sql": "REAL",    "doc": "WGS84 decimal degrees" },
+    { "name": "lon",           "local_id": 8,  "repr": "double", "type": "number",  "required": true,  "sql": "REAL" },
+    { "name": "sog",           "local_id": 9,  "repr": "double", "type": "number",  "sql": "REAL",     "doc": "Speed over ground, knots" },
+    { "name": "cog",           "local_id": 10, "repr": "double", "type": "number",  "sql": "REAL",     "doc": "Course over ground, degrees true" },
+    { "name": "heading",       "local_id": 11, "repr": "double", "type": "number",  "sql": "REAL",     "doc": "True heading, degrees" },
+    { "name": "destination",   "local_id": 12, "repr": "string", "type": "string",  "nullable": true,  "sql": "TEXT" },
+    { "name": "last_seen_ns",  "local_id": 13, "repr": "uint64", "type": "string",  "required": true,  "sql": "TEXT",    "doc": "ns timestamp; JSON/markdown carry it as a string to survive 53-bit float limits, binary carries a real u64" },
+    { "name": "first_seen_ns", "local_id": 14, "repr": "uint64", "type": "string",  "sql": "TEXT" },
+    { "name": "in_bbox",       "local_id": 15, "repr": "bool",   "type": "boolean", "sql": "INTEGER" },
+    { "name": "confidence",    "local_id": 16, "repr": "double", "type": "number",  "required": true,  "sql": "REAL",    "doc": "0..1; per-field provenance in _provenance overrides this for fused entities" }
+  ]
+}

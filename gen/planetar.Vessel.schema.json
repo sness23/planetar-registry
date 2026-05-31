@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "planetar:Vessel@1.0.0",
+  "type": "object",
+  "required": [
+    "mmsi",
+    "name",
+    "lat",
+    "lon",
+    "last_seen_ns",
+    "confidence"
+  ],
+  "properties": {
+    "mmsi": {
+      "type": "integer",
+      "description": "9-digit AIS Maritime Mobile Service Identity"
+    },
+    "name": {
+      "type": "string",
+      "description": "Registered ship name"
+    },
+    "vessel_class": {
+      "type": "string",
+      "enum": [
+        "cargo",
+        "ferry",
+        "tanker",
+        "fishing",
+        "pleasure",
+        "sailing",
+        "pilot",
+        "tug",
+        "high-speed",
+        "passenger",
+        "other"
+      ],
+      "description": "RENAMED from planetar-ais 'type' to avoid collision with the kernel 'type' field"
+    },
+    "flag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 3166-1 alpha-2 nation code"
+    },
+    "length_m": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "RENAMED from 'length'; units made explicit (metres)"
+    },
+    "callsign": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lat": {
+      "type": "number",
+      "description": "WGS84 decimal degrees"
+    },
+    "lon": {
+      "type": "number"
+    },
+    "sog": {
+      "type": "number",
+      "description": "Speed over ground, knots"
+    },
+    "cog": {
+      "type": "number",
+      "description": "Course over ground, degrees true"
+    },
+    "heading": {
+      "type": "number",
+      "description": "True heading, degrees"
+    },
+    "destination": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_seen_ns": {
+      "type": "string",
+      "description": "ns timestamp; JSON/markdown carry it as a string to survive 53-bit float limits, binary carries a real u64"
+    },
+    "first_seen_ns": {
+      "type": "string"
+    },
+    "in_bbox": {
+      "type": "boolean"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "0..1; per-field provenance in _provenance overrides this for fused entities"
+    }
+  },
+  "patternProperties": {
+    "^[a-z][a-z0-9_]*:[a-z][a-z0-9_]*$": {}
+  },
+  "additionalProperties": false
+}

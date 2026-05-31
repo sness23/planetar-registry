@@ -1,0 +1,18 @@
+{
+  "_comment": "SAR detection from planetar-sat (CFAR over Sentinel-1). An anonymous radar blob: NO mmsi/imo/name. It resolves to a planetar:Vessel by spatial-temporal proximity, never by identifier.",
+  "type": "planetar:Detection",
+  "version": "1.0.0",
+  "extends": "core:Observation",
+  "namespace": "planetar",
+  "identity": { "fields": [], "note": "No identifier. Identity is assigned only by resolution against canonical entities." },
+  "spatial": { "lat": "lat", "lon": "lon", "time": "acquired_at_ns" },
+  "fields": [
+    { "name": "scene_id",       "local_id": 1, "repr": "string", "type": "string",  "required": true, "sql": "TEXT", "doc": "Sentinel-1 GRD scene id" },
+    { "name": "lat",            "local_id": 2, "repr": "double", "type": "number",  "required": true, "sql": "REAL" },
+    { "name": "lon",            "local_id": 3, "repr": "double", "type": "number",  "required": true, "sql": "REAL" },
+    { "name": "snr",            "local_id": 4, "repr": "double", "type": "number",  "required": true, "sql": "REAL", "doc": "CFAR signal-to-noise ratio (raw radiometric strength)" },
+    { "name": "bbox_px",        "local_id": 5, "repr": "json",   "type": "array",   "sql": "TEXT", "doc": "[row_min,col_min,row_max,col_max] pixel bounds — a complex value, carried via the json repr" },
+    { "name": "acquired_at_ns", "local_id": 6, "repr": "uint64", "type": "string",  "required": true, "sql": "TEXT" },
+    { "name": "confidence",     "local_id": 7, "repr": "double", "type": "number",  "required": true, "sql": "REAL", "doc": "snr normalised to 0..1 by the adapter — comparable across sources (see §12 calibration)" }
+  ]
+}

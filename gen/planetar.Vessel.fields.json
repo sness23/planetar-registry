@@ -1,0 +1,108 @@
+{
+  "type": "planetar:Vessel",
+  "version": "1.0.0",
+  "fields": [
+    {
+      "key": "mmsi",
+      "gid": 131073,
+      "repr": "int",
+      "core": true
+    },
+    {
+      "key": "name",
+      "gid": 131074,
+      "repr": "string",
+      "core": true
+    },
+    {
+      "key": "vessel_class",
+      "gid": 131075,
+      "repr": "string",
+      "core": true
+    },
+    {
+      "key": "flag",
+      "gid": 131076,
+      "repr": "string",
+      "core": true
+    },
+    {
+      "key": "length_m",
+      "gid": 131077,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "callsign",
+      "gid": 131078,
+      "repr": "string",
+      "core": true
+    },
+    {
+      "key": "lat",
+      "gid": 131079,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "lon",
+      "gid": 131080,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "sog",
+      "gid": 131081,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "cog",
+      "gid": 131082,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "heading",
+      "gid": 131083,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "destination",
+      "gid": 131084,
+      "repr": "string",
+      "core": true
+    },
+    {
+      "key": "last_seen_ns",
+      "gid": 131085,
+      "repr": "uint64",
+      "core": true
+    },
+    {
+      "key": "first_seen_ns",
+      "gid": 131086,
+      "repr": "uint64",
+      "core": true
+    },
+    {
+      "key": "in_bbox",
+      "gid": 131087,
+      "repr": "bool",
+      "core": true
+    },
+    {
+      "key": "confidence",
+      "gid": 131088,
+      "repr": "double",
+      "core": true
+    },
+    {
+      "key": "acme:hull_temp_c",
+      "gid": 1048577,
+      "repr": "double",
+      "core": false
+    }
+  ]
+}

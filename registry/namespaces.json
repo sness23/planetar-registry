@@ -1,0 +1,8 @@
+{
+  "_comment": "Namespace registry. ns id is the high 16 bits of every global field-id.",
+  "namespaces": [
+    { "name": "core",     "id": 0,  "owner": "core-team",           "trust": "institutional" },
+    { "name": "planetar", "id": 2,  "owner": "core-team",           "trust": "institutional" },
+    { "name": "acme",     "id": 16, "owner": "acme-marine-sensors", "trust": "verified" }
+  ]
+}

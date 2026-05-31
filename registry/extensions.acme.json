@@ -1,0 +1,10 @@
+{
+  "_comment": "A third-party extension. acme adds a namespaced field to planetar:Vessel WITHOUT forking the core type. Its field key on the wire is 'acme:hull_temp_c'.",
+  "namespace": "acme",
+  "version": "0.2.0",
+  "field_extensions": {
+    "planetar:Vessel": [
+      { "name": "hull_temp_c", "local_id": 1, "repr": "double", "type": "number", "nullable": true, "sql": "REAL", "doc": "Hull-skin temperature from an acme thermal sensor" }
+    ]
+  }
+}
