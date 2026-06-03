@@ -74,3 +74,8 @@ party — one resolver, many domains (spec §5.2).
 - **Open questions made concrete** — confidence calibration (the SAR adapter
   normalises `snr/20`; AIS hardcodes `0.95` — not yet a common scale) and
   cross-namespace `ns_id` allocation still need a registry authority.
+
+## Licensing
+
+Licensed under **AGPL-3.0** (see [`LICENSE`](LICENSE)). **Commercial licenses**
+(for use without AGPL obligations) are available — contact `sness@sness.net`.
